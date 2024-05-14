@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Appointment Scheduling System</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.1">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">
+    <!-- Fullcalendar CSS -->
+    <link rel='stylesheet' href='../assets/vendor/fullcalendar/core/main.css' />
+    <link rel='stylesheet' href='../assets/vendor/fullcalendar/daygrid/main.css' />
+    <link rel='stylesheet' href='../assets/vendor/fullcalendar/timegrid/main.css' />
+    <link rel='stylesheet' href='../assets/vendor/fullcalendar/list/main.css' />
+</head>
+
+<body class="fixed-top-navbar top-nav">
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+        <div class="iq-top-navbar">
+            <div class="container">
+                <div class="iq-navbar-custom">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                            <i class="ri-menu-line wrapper-menu"></i>
+                            <a href="index.html" class="header-logo">
+                                <img src="../assets/images/logo.png" class="img-fluid rounded-normal light-logo" alt="logo">
+                                <img src="../assets/images/logo-white.png" class="img-fluid rounded-normal darkmode-logo" alt="logo">
+                            </a>
+                        </div>
+                        <div class="iq-menu-horizontal">
+                            <nav class="iq-sidebar-menu">
+                                <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                                    <a href="index.html" class="header-logo">
+                                        <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
+                                    </a>
+                                    <div class="iq-menu-bt-sidebar">
+                                        <i class="las la-bars wrapper-menu"></i>
+                                    </div>
+                                </div>
+                                <ul id="iq-sidebar-toggle" class="iq-menu d-flex">
+                                    <li class="">
+                                        <a href="../backend/index.html" class="">
+                                            <span>Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="../backend/main-my-schedule.html" class="">
+                                            <span>My Schedule</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="../backend/main-integration.html" class="">
+                                            <span>Integration</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="py-4 border-bottom">
+                            <div class="form-title text-center">
+                                <h3>Appointment Schedule System</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <h4 class="mb-3">Choose A Schedule Below</h4>
+                        <div class="d-flex flex-wrap align-items-center justify-content-between my-schedule mb-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="form-group mb-0">
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Working Hours</option>
+                                    </select>
+                                </div>
+                                <div class="select-dropdown input-prepend input-append">
+                                    <div class="btn-group">
+                                        <label data-toggle="dropdown">
+                                            <span class="dropdown-toggle search-query rounded btn bg-white btn-edit"><i class="las la-edit mr-0 text-center"></i></span><span class="search-replace"></span>
+                                            <span class="caret"><!--icon--></span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-workform">
+                                <a href="#" data-toggle="modal" data-target="#date-event" class="btn btn-primary pr-5 position-relative">New Schedule<span class="add-btn"><i class="ri-add-line"></i></span></a>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Set Your weekly hours</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card card-block card-stretch">
+                                    <div class="card-body">
+                                        <div id="calendar1" class="calendar-s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="date-event" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="popup text-left">
+                                <h4 class="mb-3">Add Schedule</h4>
+                                <form action="/" id="submit-schedule">
+                                    <div class="content create-workform row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="schedule-title">Schedule For</label>
+                                                <input class="form-control" placeholder="Enter Title" type="text" name="title" id="schedule-title" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="schedule-start-date">Start Date</label>
+                                                <input class="form-control basicFlatpickr date-input" placeholder="2020-06-20" type="text" name="startdate" id="schedule-start-date" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="schedule-end-date">End Date</label>
+                                                <input class="form-control basicFlatpickr date-input" placeholder="2020-06-20" type="text" name="enddate" id="schedule-end-date" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="color" name="color" id="schedule-color" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-4">
+                                            <div class="d-flex flex-wrap align-items-ceter justify-content-center">
+                                                <button class="btn btn-primary mr-4" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-outline-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Details -->
+    <center>
+        <div class="col-md-5 col-sm-12 col-12 align-self-center">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2>Booking Details</h2>
+
+                    <form id="booking-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="floating-input form-group">
+                                    <input class="form-control" type="text" name="fullname" id="fullname" />
+                                    <label class="form-label" for="fullname">Full Name</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="floating-input form-group">
+                                    <input class="form-control" type="email" name="email" id="email" />
+                                    <label class="form-label" for="email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="submitBooking()">Submit</button>
+                    </form>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12 align-self-center">
+            <div class="card">
+                <div class="card-body text-center">
+                    
+
+                    <table border="1px" class="customer-details" id="customer-details">
+                        <tr>
+                            <th colspan="3">Booking Details</th>
+                        </tr>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </center>
+   
+
+    <!-- Wrapper End-->
+    <footer class="iq-footer">
+        <div class="container-fluid container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="../backend/privacy-policy.html">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="../backend/terms-of-service.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-right">
+                    Copyright <span id="copyright"> 
+    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+    </span> <a href="#">Calendify</a> All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="../assets/js/backend-bundle.min.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="../assets/js/customizer.js"></script>
+
+    <!-- Fullcalendar Javascript -->
+    <script src='../assets/vendor/fullcalendar/core/main.js'></script>
+    <script src='../assets/vendor/fullcalendar/daygrid/main.js'></script>
+    <script src='../assets/vendor/fullcalendar/timegrid/main.js'></script>
+    <script src='../assets/vendor/fullcalendar/list/main.js'></script>
+    <script src='../assets/vendor/fullcalendar/interaction/main.js'></script>
+
+    <!-- app JavaScript -->
+    <script src="../assets/js/app.js"></script>
+
+    <script>
+        // Function to handle booking submission
+        function submitBooking() {
+            var fullName = document.getElementById("fullname").value;
+            var email = document.getElementById("email").value;
+
+            // Inserting data into the table
+            var table = document.getElementById("customer-details");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = table.rows.length - 2;
+            cell2.innerHTML = fullName;
+            cell3.innerHTML = email;
+        }
+    </script>
+</body>
+
+</html>
